@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<h2 align="center">Личная панель</h2>
+<div class="detail_new">
+<table>
+    <tr>
+        <td><b>ФИО</b></td>
+        <td>{{current_user.fio}}</td>
+    </tr>
+     <tr>
+        <td><b>Login</b></td>
+        <td>{{current_user.login}}</td>
+    </tr>
+</table>
+    {% if errors != '' %}
+        <p style="color: red">{{errors}}</p>
+    {% endif %}
+    {% if suc != '' %}
+        <p style="color: green">{{suc}}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="old_password"l>СТарый пароль:</label>
+            <input type="password" name="old_password" id="old_password">
+        </p>
+          <p>
+            <label for="new_password_1"l>Новый пароль:</label>
+            <input type="password" name="new_password_1" id="new_password_1">
+        </p>
+          <p>
+            <label for="new_password_2"l>Повторите новый пароль:</label>
+            <input type="password" name="new_password_2" id="new_password_2">
+        </p>
+        <p>
+            <button>ИЗменить</button>
+        </p>
+    </form>
+</div>
+{% endblock %}

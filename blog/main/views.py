@@ -62,3 +62,30 @@ def auth(request):
 
     return render(request, 'auth.html', {'error': error})
 
+def logout(request):
+    if 'user' in request.session:
+        del request.session['user']
+    return redirect('/')
+
+def panel(request):
+    if 'user' in request.session:
+        current_user = User.objects.filter(login=request.session['user']).first()
+        errors = ''
+        suc = ''
+        if request.method == 'POST':
+            old_password = request.POST['old_password']
+            new_password_1 = request.POST['new_password_1']
+            new_password_2 = request.POST['new_password_2']
+            if check_password(old_password, current_user.password):
+                if new_password_1 == new_password_2:
+                    current_user.password = make_password(new_password_1)
+                    current_user.save()
+
+                    suc += 'Пароль успешно изменен!'
+                else:
+                    errors += 'Пароли не совпали!'
+            else:
+                errors += 'Password error'
+
+        current_user = User.objects.filter(login=request.session['user']).first()
+        return render(request, 'lk/panel.html', {'current_user': current_user, 'errors': errors, 'suc': suc})

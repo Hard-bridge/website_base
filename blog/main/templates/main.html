@@ -19,7 +19,9 @@
                     <a href="/contacts">Контакты</a>
                 </li>
                 {% if 'user' in request.session %}
-
+                        <li>
+                    <a href="/logout">Выход</a>
+                </li>
 
                 {% else %}
                 <li>
