@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block title %}Главная{% endblock %}
+
+ {% block content %}
+<h2 align="center">Мой блог</h2>
+<div class="news">
+  {% for new in news %}
+    <div class="news_item">
+          <h4>{{new.title}}</h4>
+         <p>
+          <img src="/media/{{new.image}}" width="100%">
+         </p>
+         <p>
+          <a href="/detailt/{{new.id}}">Подробнее</a>
+         </p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

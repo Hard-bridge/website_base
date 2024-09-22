@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+ {% block content %}
+{% if m != '' %}
+<p style="color: green">{{m}}</p>
+{% endif %}
+<h2 align="center">Регистрация</h2>
+<div class="detail_new">
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label>Login:</label>
+        </p>
+        <p>
+            <input type="text" name="login" required>
+        </p>
+          <p>
+            <label>Password:</label>
+        </p>
+        <p>
+            <input type="password" name="password" required>
+        </p>
+          <p>
+            <label> ФИО:</label>
+        </p>
+        <p>
+            <input type="text" name="fio" required>
+        </p>
+        <p>
+            <input type="submit" value="Зарегистрироваться">
+        </p>
+    </form>
+</div>
+{% endblock %}

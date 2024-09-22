@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} {% endblock %}</title>
+        <link rel="stylesheet" href="/static/app.css">
+    </head>
+    <body>
+        <header>
+           <h1 class="header">Иванов Иван</h1>
+            <ul class="menu">
+                <li>
+                    <a href="/">Главная</a>
+                </li>
+                 <li>
+                    <a href="/portfolio">Портфолио</a>
+                </li>
+                 <li>
+                    <a href="/contacts">Контакты</a>
+                </li>
+                {% if 'user' in request.session %}
+
+
+                {% else %}
+                <li>
+                    <a href="/reg">Регистрация</a>
+                </li>
+                 <li>
+                    <a href="/auth">Авторизация</a>
+                </li>
+                {% endif %}
+            </ul>
+        </header>
+        <div class="content">
+            {% block content %} {% endblock %}
+        </div>
+        <footer>
+            <p>Все права защищены</p>
+        </footer>
+    </body>
+</html>
