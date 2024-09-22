@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+<h2 align="center">Новости</h2>
+<div class="news_block">
+    {% for new in news %}
+        <div>
+            <p>
+                <img src="/media/{{new.image}}" width="300px">
+            </p>
+            <p>
+               <h3> {{new.title}}</h3>
+            </p>
+            <p>
+                Создатель: {{new.user.login}}
+            </p>
+            <p>
+                <i>{{new.created_at}}</i>
+            </p>
+            <p>
+                <a href="/like/{{new.id}}"><img src="/static/images/like.png" width="30px"> </a>{{new.count_like}}
+            </p>
+            <p>
+                <a href="/new/{{new.id}}">Подробнее</a>
+            </p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

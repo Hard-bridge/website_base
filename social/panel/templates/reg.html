@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+    <h3 align="center">Регистрация</h3>
+    {% if error != ''  %}
+    <p align="center" style="color: red">{{error}}</p>
+    {% endif %}
+    {% if suc != ''  %}
+    <p align="center" style="color: green">{{suc}}</p>
+    {% endif %}
+    <form method="POST" class="form_reg">
+        {% csrf_token %}
+        <p>
+            <label>ФИО:</label>
+            <input type="text" name="fio" class="element_form" placeholder="ФИО">
+        </p>
+          <p>
+            <label>Login:</label>
+            <input type="text" name="login" class="element_form"  placeholder="login">
+        </p>
+          <p>
+            <label>Password:</label>
+            <input type="password" name="password" class="element_form"  placeholder="password">
+        </p>
+          <p>
+            <label>Email:</label>
+            <input type="email" name="email" class="element_form"  placeholder="email">
+        </p>
+         <p>
+            <label>Phone:</label>
+            <input type="text" name="phone" class="element_form"  placeholder="phone">
+        </p>
+        <p>
+            <button class="btn">Зарегистрироваться</button>
+        </p>
+    </form>
+{% endblock %}

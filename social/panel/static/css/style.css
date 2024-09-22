@@ -1,0 +1,169 @@
+body{/*селектор по тегу body*/
+    background-color: rgb(180, 209, 190);
+    font-family: 'Tahoma';
+    font-size: 14px;
+    
+}
+.headerh{/*селектор по класу headerh*/
+    color: red;
+    float: left;  
+    margin-left: 10px
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+.menu{
+    text-align: center;
+}
+.menu li{
+    display: inline-block;
+    padding: 7px;
+}
+/*0 1 2 3 4 5 6 7 8 9 a b c d e f
+rgb
+*/
+a{
+    color: #0a530c;
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+    text-decoration: underline;
+}
+.logo{
+    float: left;
+}
+.clear{
+    clear: both;
+}
+.news{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.news_item{
+    margin: 10px;
+    box-shadow: 4px 4px 34px #444;
+    border-radius: 10px;
+    padding: 10px;
+    transition: box-shadow .5s;
+    animation-name: backgroundColorAnomate;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.news_item:hover{
+    box-shadow: 4px 4px 34px #999;
+}
+.title{
+    font-size: 18px;
+    font-weight: 700;
+}
+.date{
+    font-style: italic;
+}
+.red{
+    color: red;
+}
+.yellow{
+    color: yellow
+}
+.blue{
+    color: blue
+}
+.news_item p:first-child{
+    padding: 0;
+    margin: 0;
+}
+.btn{
+
+}
+.box{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+    background-color: #fff;
+    position: absolute;
+    animation-name: TopAnimation;
+    animation-duration: 4s;
+    left: 40%;
+    /*animation-iteration-count: infinite;*/
+}
+
+@keyframes backgroundColorAnomate{
+    from{
+        background-color: red;
+    }
+    25%{
+        background-color: yellow;
+    }
+    50%{
+        background-color: green;
+    }
+    75%{
+        background-color: blue;
+    }
+    to{
+        background-color: violet;
+    }
+}
+@keyframes TopAnimation{
+    from{
+        top: 0px;
+    }
+    25%{
+        top: 50px;
+    }
+    50%{
+        top: 100px;
+    }
+    75%{
+        top: 150px;
+    }
+    to{
+        top: 200px;
+    }
+}
+.element_form{
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    box-shadow: 0px 0px 10px #777
+}
+.form_reg{
+    display: block;
+    width: 400px;
+    margin: 20px auto
+}
+.btn{
+    background-color: #0c7e0c;
+    padding: 10px;
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color .5s
+}
+.btn:hover{
+    background-color: #fff;
+    border: 1px solid  #0c7e0c;
+    color:  #0c7e0c
+}
+.avatar{
+    display: block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px
+}
+.news_block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.news_block div{
+    margin: 10px
+}
+.new_one{
+    width: 80%;
+    margin: auto
+}

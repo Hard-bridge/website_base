@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> {% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <p class="logo">
+                <img src="/static/images/logo.png" width="50px">
+            </p>
+            <h2 class="headerh">
+                Это мой первый сайт
+            </h2>
+            <div class="clear"></div>
+            <ul class="menu">
+                <li>
+                    <a href="/">Главная</a>
+                </li>
+                {% if 'login' in request.session %}
+                 <li>
+                    <a href="/panel">Личный кабинет</a>
+                </li>
+
+                <li>
+                    <a href="/logout">Выйти</a>
+                </li>
+
+                {% else %}
+                <li>
+                    <a href="/reg">Регистрация</a>
+                </li>
+                <li>
+                    <a href="/auth">Авторизация</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="/news">Новости</a>
+                </li>
+            </ul>
+        </header>
+        <main>
+           {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p align="center">Все права защищены</p>
+        </footer>
+    </body>
+</html>

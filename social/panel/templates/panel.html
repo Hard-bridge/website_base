@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+{% block title %}Личная панель{% endblock %}
+
+{% block content %}
+    <h3 align="center">Личная панель</h3>
+     {% if error != ''  %}
+    <p align="center" style="color: red">{{error}}</p>
+    {% endif %}
+    {% if suc != ''  %}
+    <p align="center" style="color: green">{{suc}}</p>
+    {% endif %}
+     <form method="POST" class="form_reg">
+            {% csrf_token %}
+
+              <p>
+                <label>Старый пароль:</label>
+                <input type="password" name="old_password" class="element_form"  placeholder="Старый пароль">
+            </p>
+              <p>
+                <label>Новый пароль:</label>
+                <input type="password" name="new_password" class="element_form"  placeholder="Новый пароль">
+            </p>
+
+            <p>
+                <button class="btn">Изменить</button>
+            </p>
+        </form>
+    <h2 align="center">Редактирование данных</h2>
+    <form method="POST" class="form_reg" action="edit_user_data">
+            {% csrf_token %}
+
+              <p>
+                <label>ФИО:</label>
+                <input type="text" name="fio" class="element_form"  value="{{user_current.fio}}">
+            </p>
+              <p>
+                <label>Email:</label>
+                <input type="email" name="email" class="element_form"  value="{{user_current.email}}">
+            </p>
+             <p>
+                <label>Телефон:</label>
+                <input type="text" name="phone" class="element_form"  value="{{user_current.phone}}">
+            </p>
+            <p>
+                <button class="btn">Редактировать</button>
+            </p>
+        </form>
+        <p align="center">
+            <img src="/media/{{user_current.avatar}}" width="200px" class="avatar">
+        </p>
+        <form action="/editavatat" class="form_reg"  method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="avatar" class="btn">Загрузить аватарку</label>
+            <input type="file" name="avatar" id="avatar" style="display: none">
+             <button class="btn">Добавить</button>
+        </form>
+
+        <form action="/addnew" class="form_reg"  method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+             <p>
+                <label>Заголовок:</label>
+                <input type="text" name="title" class="element_form" >
+            </p>
+             <p>
+                <label>Описание:</label>
+                <input type="text" name="description" class="element_form" >
+            </p>
+            <p>
+                <label>Категория:</label>
+                <select name="cat">
+                    {% for cat in cats %}
+                        <option value="{{cat.id}}">
+                            {{cat.name}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </p>
+            <label for="image" class="btn">Загрузить картинку</label>
+            <input type="file" name="image" id="image" style="display: none">
+             <button class="btn">Добавить новость</button>
+        </form>
+{% endblock %}
